@@ -1,0 +1,32 @@
+{
+  "name": "NaijaTalk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/Emtuchi/NaijaTalk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emtuchi/NaijaTalk/issues"
+  },
+  "homepage": "https://github.com/Emtuchi/NaijaTalk#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mongoose": "^8.2.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "nodemon": "^3.1.0"
+  }
+}
