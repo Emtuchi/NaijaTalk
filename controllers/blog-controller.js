@@ -1,0 +1,109 @@
+import mongoose from "mongoose";
+import Blog from "../model/BlogSchema.js";
+import User from "../model/UserSchema.js";
+
+export const getAllBlogs = async (req, res) => {
+    let blogs;
+    try{
+        blogs = await Blog.find();
+    } catch(err) {
+        return console.log(err)
+    }
+    if (!blogs) {
+        return res.status(404).json({message: "No Blogs Found !"});
+    }
+    return res.status(200).json({blogs})
+};
+
+export const UploadBlog = async (req, res) => {
+    const { title, description, image, user, date } = req.body;
+    let RegisteredUser;
+    try {
+        RegisteredUser = await User.findById(user);
+    } catch(err) {
+        return console.log(err)
+    }
+    if (!RegisteredUser) {
+        return res.status(400).json({message: "User not Found !"});
+    }
+    const blog = new Blog({
+        title,
+        description,
+        image,
+        user,
+        date,
+    })
+    try {
+        const session = await mongoose.startSession();
+        session.startTransaction();
+        await blog.save({session});
+        RegisteredUser.blogs.push(blog);
+        await RegisteredUser.save({ session });
+        await session.commitTransaction();
+    } catch(err) {
+        return res.status(500).json({message: err})
+    }
+    return res.status(200).json({ blog });
+};
+
+export const UpdateBlog = async (req, res) => {
+    const { title, description } = req.body;
+    const Id = req.params.blog_id;
+    let blog;
+    try {
+        blog = await Blog.findByIdAndUpdate(Id, {
+            title,
+            description
+        })
+    } catch(err) {
+        console.log(err)
+    }
+    if (!blog) {
+        return res.status(500).json({message: "OOps, Error Occured while Updating!"});
+    }
+    return res.status(200).json({ blog });
+}
+
+export const getBlog = async (req, res) => {
+    const id = req.params.blog_id;
+    let blog;
+    try {
+        blog = await Blog.findById(id);
+    } catch(err) {
+        return console.log(err);
+    }
+    if (!blog) {
+        return res.status(404).json({message: "Blog Not Found !"})
+    }
+    return res.status(200).json({ blog });
+}
+
+export const deleteBlog = async (req, res) => {
+    const id = req.params.blog_id;
+    let blog;
+    try {
+        blog = await Blog.findByIdAndDelete(id).populate('user');
+        await blog.user.blogs.pull(blog);
+        await blog.user.save();
+    } catch(err) {
+        return console.log(err);
+    }
+    if (!blog) {
+        return res.status(500).json({ message: "OOps, Error Occurred while deleting"})
+    }
+    return res.status(200).json({message: "Successfully Deleted"});
+}
+
+export const getUser = async (req, res) => {
+    const id = req.params.user_id;
+    let blogsOfuser;
+    try {
+        blogsOfuser = await User.findById(id).populate("blogs");
+    } catch(err) {
+        return console.log(err)
+    }
+    if (!blogsOfuser) {
+        return res.status(404).json({message:"Unable to find blogs of this user"})
+    }
+    return res.status(200).json({blogs: blogsOfuser})
+}

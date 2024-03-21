@@ -1,29 +1,27 @@
 import mongoose from "mongoose";
 
 // create a skeleton(Schema) to hold info about the user
-const UserSchema = new mongoose.Schema({
-    name: {
+const BlogSchema = new mongoose.Schema({
+    title: {
         type: String,
         required: true
     },
-    email: {
+    description: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
-    password: {
+    image: {
         type: String,
-        required: true,
-        minlength: 1
+        required: true
     },
-    blogs: [{
+    user: {
         type: mongoose.Types.ObjectId,
-        ref: "Blog",
+        ref: "User",
         required: true
-    }],
+    },
     date: {
         type: Date,
         default: Date.now
     }
 });
-export default mongoose.model("User", UserSchema);
+export default mongoose.model("Blog", BlogSchema);
