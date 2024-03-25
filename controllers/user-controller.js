@@ -1,7 +1,8 @@
+import { loginValidation, SignupValidation} from "../model/ValidationSchema.js";
 import User from "../model/UserSchema.js";
 import  bcrypt from 'bcryptjs';
 
-export const getAllUsers = async (req, res, next) => {
+export const getAllUsers = async (req, res) => {
     let users;
     try {
         users = await User.find();
@@ -15,6 +16,8 @@ export const getAllUsers = async (req, res, next) => {
 };
 
 export const signup = async (req, res) => {
+    const { error } = SignupValidation(req.body)
+    if (error) return res.status(400).send(error.details[0].message);
     const { name, email, password, date } = req.body;
 
     let UserExists;
@@ -44,6 +47,8 @@ export const signup = async (req, res) => {
 }
 
 export const login = async (req, res) => {
+    const { error } = loginValidation(req.body)
+    if (error) return res.status(400).send(error.details[0].message);
     const { email, password } = req.body
     let UserExists;
     try {
@@ -59,5 +64,6 @@ export const login = async (req, res) => {
     if (!SamePassword) {
         return res.status(400).json({message: "Access Denied! Wrong details"})
     }
-    return res.status(200).json({message: "Login Succesfull"})
+
+    return res.status(200).json({message: "login succesful"})
 }

@@ -11,7 +11,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use("/api/v1/user", UserRouter);
+app.use("/api/v1/users", UserRouter);
 app.use("/api/v1/blogs", BlogRouter);
 
 // connect to monogdb website
