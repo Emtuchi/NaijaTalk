@@ -3,6 +3,7 @@ import { UpdateBlog, UploadBlog, deleteBlog, getAllBlogs, getBlog, getUser } fro
 
 const BlogRouter = express.Router();
 
+
 BlogRouter.get("/", getAllBlogs);
 BlogRouter.post("/upload", UploadBlog);
 BlogRouter.put("/update/:blog_id", UpdateBlog);

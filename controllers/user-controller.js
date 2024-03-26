@@ -65,5 +65,5 @@ export const login = async (req, res) => {
         return res.status(400).json({message: "Access Denied! Wrong details"})
     }
 
-    return res.status(200).json({message: "login succesful"})
+    return res.status(200).json({message: "login succesful"});
 }

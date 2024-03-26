@@ -1,6 +1,7 @@
 import Joi from '@hapi/joi';
 
 export const SignupValidation = (data) => {
+    // schema to validate inputs when signig up
     const Schema = Joi.object({
         name: Joi.string()
             .min(1)
@@ -18,6 +19,7 @@ export const SignupValidation = (data) => {
 };
 
 export const loginValidation = (data) => {
+    // schema to validate inputs when loging in
     const Schema = Joi.object({
         email: Joi.string()
             .min(9)
