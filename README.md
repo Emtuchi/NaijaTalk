@@ -18,8 +18,14 @@ Create a backend for a chat app called NaijaTalk that performs validations and h
 ## imports
  run
 ```npm init```
-with our package-json in the repo
+with our package.json in the repo, check "dependencies" in the package.json for a list of imports used
 
 ## Contributors
 Emetu George Onuoha
+
+## Languages
+javascript only
+
+## Usage
+run ```npm start``` to launch app
 
