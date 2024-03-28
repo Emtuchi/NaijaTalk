@@ -10,10 +10,6 @@ const BlogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image: {
-        type: String,
-        required: true
-    },
     /** user: A reference to a user (represented by a MongoDB ObjectId) 
      * who authored the blog post. It is required and linked to a “User” model
      * 

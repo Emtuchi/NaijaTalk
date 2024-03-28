@@ -16,7 +16,7 @@ export const getAllBlogs = async (req, res) => {
 };
 
 export const UploadBlog = async (req, res) => {
-    const { title, description, image, user, date } = req.body;
+    const { title, description, user, date } = req.body;
     let RegisteredUser;
     try {
         RegisteredUser = await User.findById(user);
@@ -29,7 +29,6 @@ export const UploadBlog = async (req, res) => {
     const blog = new Blog({
         title,
         description,
-        image,
         user,
         date,
     })

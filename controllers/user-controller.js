@@ -67,3 +67,17 @@ export const login = async (req, res) => {
 
     return res.status(200).json({message: "login succesful"});
 }
+
+export const getUser = async (req, res) => {
+    const id = req.params.user_id;
+    let user;
+    try {
+        user = await User.findById(id);
+    } catch(err) {
+        return console.log(err)
+    }
+    if (!user) {
+        return res.status(404).json({message:"User Not Found!"})
+    }
+    return res.status(200).json({ user })
+}
