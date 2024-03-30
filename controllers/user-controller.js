@@ -1,6 +1,7 @@
 import { loginValidation, SignupValidation} from "../model/ValidationSchema.js";
 import User from "../model/UserSchema.js";
 import  bcrypt from 'bcryptjs';
+import mongoose from "mongoose";
 
 export const getAllUsers = async (req, res) => {
     let users;
@@ -74,10 +75,26 @@ export const getUser = async (req, res) => {
     try {
         user = await User.findById(id);
     } catch(err) {
-        return console.log(err)
+        console.error(err);
     }
     if (!user) {
         return res.status(404).json({message:"User Not Found!"})
     }
     return res.status(200).json({ user })
+}
+
+export const deleteUser = async (req, res) => {
+    const id = req.params.user_id;
+    let user = await User.findById(id);
+    let DeletedUser;
+    if (!user) {
+        return res.status(404).json({ message: "User Not Found!"})
+    };
+    try {
+        DeletedUser = await User.findByIdAndDelete(id);
+    } catch(err) {
+        console.error(err);
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+    return res.status(200).json({message: "Successfully Deleted"});
 }

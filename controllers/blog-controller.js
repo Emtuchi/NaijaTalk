@@ -48,8 +48,8 @@ export const UploadBlog = async (req, res) => {
          */
         const session = await mongoose.startSession();
         session.startTransaction();// start transaction
-        await blog.save({session});
-        RegisteredUser.blogs.push(blog);
+        await blog.save({session});// save blogs to database as part of the current session
+        RegisteredUser.blogs.push(blog);// push blog into blogs array
         await RegisteredUser.save({ session });
         await session.commitTransaction(); //save and end transaction
     } catch(err) {
@@ -102,8 +102,10 @@ export const deleteBlog = async (req, res) => {
          * you use .populate('user').
          */
         blog = await Blog.findByIdAndDelete(id).populate('user');
-        await blog.user.blogs.pull(blog);// delete the blog
-        await blog.user.save();
+        if (blog.user && blog.user.blogs) {
+            await blog.user.blogs.pull(blog);// delete the blog
+            await blog.user.save();
+        }
     } catch(err) {
         return console.log(err);
     }
