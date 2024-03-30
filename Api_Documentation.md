@@ -24,9 +24,16 @@
 ## Get User by ID
 - Method: GET
 - URL: /api/v1/users/:user_id
-- Description: Retrieves a user by their ID passed as a parameter in the url.
+- Description: Retrieves a user by their ID passed as a parameter(:user_id) in the url.
 - Request Body: None
 - Response: User object.
+
+## Delete User
+- method: DELETE
+- URL: /api/v1/users/:user_id
+- Description: Deletes a user by their ID passed as a parameter(:user_id) in the url.
+- Request Body: None
+- Response: Success Message or error
 
 
 # Blog Endpoints
@@ -41,28 +48,28 @@
 ## Upload Blog
 - Method: POST
 - URL: /api/v1/blogs/upload
-- Description: Uploads a new blog.
-- Request Body: Blog information including title, description, user, date.
-- Response: blog object contaning information about blog including id, date, title, description or error.
+- Description: Uploads a new blog the site by attaching it to a user through the user's id.
+- Request Body: Blog information including title, description and user id.
+- Response: blog object contaning information about the blog including blog id, date, title, description or error.
 
 ## Update Blog
 - Method: PUT
 - URL: /api/v1/blogs/update/:blog_id
-- Description: Updates an existing blog by its ID which is passed as a parameter in the url.
+- Description: Updates an existing blog using its ID to locate it, the id is passed as a parameter(blog_id) in the url.
 - Request Body: blog information including title and description.
 - Response: blog object containing information about updated blog or error.
 
 ## Get Blog by ID
 - Method: GET
 - URL: /api/v1/blogs/:blog_id
-- Description: Retrieves a blog by its ID which is passed as a parameter in the url.
+- Description: Retrieves a blog by its ID which is passed as a parameter(blog_id) in the url.
 - Request Body: None
 - Response: Blog object.
 
 ## Delete Blog
 - Method: DELETE
 - URL: /api/v1/blogs/:blog_id
-- Description: Deletes a blog by its ID.
+- Description: Deletes a blog by using its ID.
 - Request Body: None
 - Response: Success message or error.
 
