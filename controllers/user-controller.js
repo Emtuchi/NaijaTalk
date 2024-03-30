@@ -1,7 +1,6 @@
 import { loginValidation, SignupValidation} from "../model/ValidationSchema.js";
 import User from "../model/UserSchema.js";
 import  bcrypt from 'bcryptjs';
-import mongoose from "mongoose";
 
 export const getAllUsers = async (req, res) => {
     let users;
