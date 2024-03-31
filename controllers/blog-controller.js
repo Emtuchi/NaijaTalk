@@ -49,8 +49,8 @@ export const UploadBlog = async (req, res) => {
         const session = await mongoose.startSession();
         session.startTransaction();// start transaction
         await blog.save({session});// save blogs to database as part of the current session
-        RegisteredUser.blogs.push(blog);// push blog into blogs array
-        await RegisteredUser.save({ session });
+        RegisteredUser.blogs.push(blog);// push blog into blogs array of a user gotten by its id
+        await RegisteredUser.save({ session });// save the actions taken on RegisteredUser as part of the session
         await session.commitTransaction(); //save and end transaction
     } catch(err) {
         return res.status(500).json({message: err})
