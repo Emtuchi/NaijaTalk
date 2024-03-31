@@ -1,5 +1,6 @@
 # NaijaTalk
-![](https://www.bing.com/images/search?view=detailV2&ccid=agYRqx0x&id=76B8780EE5EE3745A2EE66F1D6562744A196B027&thid=OIP.agYRqx0xN_pEOfoVN7hkEwHaHa&mediaurl=https%3a%2f%2fcdn0.iconfinder.com%2fdata%2ficons%2fkameleon-free-pack-rounded%2f110%2fChat-2-1024.png&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.6a0611ab1d3137fa4439fa1537b86413%3frik%3dJ7CWoUQnVtbxZg%26pid%3dImgRaw%26r%3d0&exph=1024&expw=1024&q=Chat+App+Icon&simid=607995248991607303&FORM=IRPRST&ck=5F8794D569E1AE124AADA204A8648037&selectedIndex=0&itb=1)
+
+
 
 ## Resources
 
@@ -11,6 +12,13 @@
 - [understanding session transactions with mongoose](https://mongoosejs.com/docs/transactions.html)
 
 - [understanding mongoose schemas](https://mongoosejs.com/docs/guide.html)
+
+
+## A Sneak peek into the project journey
+- [A google slide presentation explaining the project](https://docs.google.com/presentation/d/1bq7jbexVywbl0jPcF8PWcAJQKBF_sXcbFwAySaQ9F4g/edit?usp=sharing)
+
+- [A video demo of the project](https://drive.google.com/file/d/1OEqgFeVX7uT0NYhQu8pLLGdLM8dkGaHw/view?usp=drivesdk)
+
 
 ## Objective
 Create a backend for a chat app called NaijaTalk that performs validations and handles user logins and navigations and handles blog posts
