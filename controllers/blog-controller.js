@@ -112,7 +112,7 @@ export const deleteBlog = async (req, res) => {
     if (!blog) {
         return res.status(500).json({ message: "OOps, Error Occurred while deleting"})
     }
-    return res.status(200).json({message: "Successfully Deleted"});
+    return res.status(200).json({message: "Successfully Deleted Blog!"});
 }
 
 export const getUserBlogs = async (req, res) => {
